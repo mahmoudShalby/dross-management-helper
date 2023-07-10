@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau+Infant:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	font-family: 'Ysabeau Infant', sans-serif;
+	@apply bg-gray-50 dark:bg-gray-900 bg-gradient-to-br from-blue-500 via-sky-500 to-lime-500  text-gray-900 dark:text-gray-100 text-lg grid place-items-center h-screen;
+}
+
+.container {
+	@apply bg-gray-50 dark:bg-gray-800 flex-y gap-y-2 text-center px-4 py-4 rounded-lg shadow-2xl !important;
+}
+
+.flex-y {
+	@apply flex flex-col;
+}
+
+input {
+	@apply text-gray-900 px-2 py-1 rounded-lg outline-none transition !important;
+}
+
+button {
+	@apply px-2 py-1 bg-sky-600 hover:bg-sky-700 rounded-lg transition shadow-lg font-bold !important;
+}
+
+button:disabled {
+  @apply bg-gray-600 !important;
+}
+
+button.emerald {
+	@apply bg-emerald-600 hover:bg-emerald-700 !important;
+}
+
+button.red {
+	@apply bg-red-600 hover:bg-red-700 !important;
+}
+
+button.lime {
+	@apply bg-lime-600 hover:bg-lime-700 !important;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+  <div class="container w-[370px]">
+    <h1 class="text-4xl">Login</h1>
+    <!-- <p class=""> -->
+      <span id="message" class="hidden mt-[-2px] mb-[-7px] text-red-500 font-bold"></span><br />
+      <!-- <span id="passwordLengthErrorMessage" class="hidden mt-[-2px] mb-[-7px] text-red-500 font-bold">Password's length should be 8 or higher!</span> -->
+    <!-- </p> -->
+    <div class="flex-y text-start">
+      <label>Username</label>
+      <input type="text" placeholder="Username" id="usernameInput">
+    </div>
+    <div class="flex-y text-start">
+      <label>Password</label>
+      <input type="password" placeholder="Password" id="passwordInput">
+    </div>
+    <button id="submitButton" disabled>Finished!</button>
+  </div>
+
+  <script>
+    const message = document.getElementById('message')
+    const usernameInput = document.getElementById('usernameInput')
+    const passwordInput = document.getElementById('passwordInput')
+    const submitButton = document.getElementById('submitButton')
+
+    window.addEventListener('input', async () => {
+      const response = await fetch('/login', {
+        method: 'POST',
+        body: { username: usernameInput.value, password: passwordInput.value }
+      })
+    })
+  </script>
+</body>
+
+</html>
