@@ -1,10 +1,17 @@
-const { Schema, model } = require('mongoose');
+import { Schema, model } from 'mongoose'
 
-const schema = new Schema({
-    _id: 'UUID',
-    owner_id: { type: 'UUID', ref: 'User', required: false},
+export interface DataGroup {
+    _id: Schema.Types.UUID
+    owner_id: Schema.Types.UUID
+    name: string
+    children: Schema.Types.UUID
+}
+
+const schema = new Schema<DataGroup>({
+    _id: Schema.Types.UUID,
+    owner_id: { type: Schema.Types.UUID, ref: 'User', required: false},
     name: String,
-    children: [{ type: 'UUID', ref: 'DataGroup' }]
-}, { timestams: true })
+    children: [{ type: Schema.Types.UUID, ref: 'DataGroup' }]
+}, { timestamps: true })
 
-module.exports = model('DataGroup', schema);
+export default model('DataGroup', schema);

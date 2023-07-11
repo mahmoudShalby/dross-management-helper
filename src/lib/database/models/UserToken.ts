@@ -1,8 +1,13 @@
-const { Schema, model } = require('mongoose');
+import { Schema, model } from 'mongoose'
 
-const schema = new Schema({
-    user_id: { type: 'UUID', ref: 'User'},
+export interface UserToken {
+    user_id: Schema.Types.UUID
+    token: string
+}
+
+const schema = new Schema<UserToken>({
+    user_id: { type: Schema.Types.UUID, ref: 'User' },
     token: String
-}, { timestams: true });
+}, { timestamps: true })
 
-module.exports = model('UserToken', schema);
+export default model('UserToken', schema)

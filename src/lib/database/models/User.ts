@@ -1,9 +1,22 @@
-const { Schemam, model } = require('mongoose');
+import { Schema, model } from 'mongoose'
 
-const schema = new Schema({
-    _id: 'UUID'
-    username: String,
-    password: String
-}, { timestams: true });
+export interface User {
+    _id: Schema.Types.UUID
+    username: string
+    password: string
+}
 
-module.exports = model('User', schema);
+const usernameValidator = (value: User['username']) => /\w+/.test(value)
+
+const schema = new Schema<User>({
+    _id: Schema.Types.UUID,
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+        validate: [usernameValidator, "username `{VALUE}` isn't valid."]
+    },
+    password: { type: String, required: true }
+}, { timestamps: true })
+
+export default model('User', schema)
