@@ -5,4 +5,4 @@ const schema = new Schema({
     token: String
 }, { timestams: true });
 
-module.exports = model('Token', schema);
+module.exports = model('UserToken', schema);
